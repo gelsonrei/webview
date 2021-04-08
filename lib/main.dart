@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
           fontFamily: "Arial",
           textTheme: TextTheme(
               button: TextStyle(color: Colors.white, fontSize: 18.0),
-              title: TextStyle(color: Colors.red))),
+              headline6: TextStyle(color: Colors.red))),
       home: Home(),
     );
   }

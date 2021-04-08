@@ -16,9 +16,7 @@ class Home extends StatelessWidget {
   Widget _urlButton(BuildContext context, String url) {
     return Container(
         padding: EdgeInsets.all(20.0),
-        child: FlatButton(
-          color: Theme.of(context).primaryColor,
-          padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 15.0),
+        child: TextButton(
           child: Text(url),
           onPressed: () => _handleURLButtonPress(context, url),
         ));
