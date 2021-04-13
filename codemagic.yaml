@@ -31,7 +31,7 @@ workflows:
 
         - name: Set up local properties # required for Android build
           script: |
-                echo "flutter.sdk=$HOME/Documents/Devel/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+                echo "flutter.sdk=$HOME/Documentos/Devel/flutter" > "$FCI_BUILD_DIR/android/local.properties"
         - name: Build Android debug     # for building in debug mode
           script: |
                 flutter build apk --debug
