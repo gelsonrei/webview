@@ -1,4 +1,6 @@
 workflows:
+
+
   my-workflow:
     name: My workflow name
     instance_type: mac_mini
@@ -27,3 +29,25 @@ workflows:
           - name@example.com
       scripts:
         - echo 'Post-publish script'
+        - name: Set up local properties # required for Android build
+          script: |
+                echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
+        - name: Build Android debug     # for building in debug mode
+          script: |
+                flutter build apk --debug
+        - name: Build Android release   # for building in release mode
+          script: |
+                flutter build apk --release
+        - name: Build iOS unsigned   # for building iOS (.app)
+          script: |
+                flutter build ios --debug --no-codesign
+        - name: Build iOS signed   # for building iOS (.ipa)
+          script: |
+            xcode-project use-profiles
+            xcode-project build-ipa --workspace ios/Runner.xcworkspace --scheme Runner
+        - name: Build web           # for building Flutter web app
+          script: |
+            flutter config --enable-web
+            flutter build web --release
+            cd build/web
+            7z a -r ../web.zip ./*
