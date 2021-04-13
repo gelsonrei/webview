@@ -20,7 +20,7 @@ workflows:
           source: true
       cancel_previous_builds: false
     artifacts:
-      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/*.apk
     publishing:
       email:
         recipients:
